@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style src="stle.css"></style>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="logowanie">
+
+        <H2>Dodawanie danych</H2>
+        
+        <H5>Platforma</H5>
+        <input id=".Platforma">
+
+        <H5>login</H5>
+        <input id=".login">
+
+        <H5>Hasło</H5>
+        <input id=".Hasło">
+
+         <button id="zapisz">Zapisz Dane</button>
+    
+    </div>
+    <div id="usuwanie">
+        <H5>login</H5>
+        <input id=".login1">
+
+        <H5>Hasło</H5>
+        <input id=".Hasło2">
+
+        <button id="zapisz2">Zapisz Dane</button>
+
+    </div>
+    
+    <div id="zapisane">
+        
+        <h3>Zapisane Dane</h3>
+    
+    </div>
+
+
+
+</body>
+
+<script>
+    const loginU = document.getElementById('.login');
+    const HasłoU = document.getElementById('.Hasło');
+    const PlatformaU = document.getElementById('.Platforma')
+    const zapiszU = document.getElementById('zapisz');
+    const ZapisaneU = document.getElementById('zapisane');
+    
+
+ zapiszU.onclick = function (){
+    const login = loginU.value;
+    const Hasło = HasłoU.value;
+    const Platforma = PlatformaU.value;
+
+    if (login && Hasło) {
+        let Dane = {
+            login: login,
+            Hasło: Hasło
+        };
+     let Dane_serialized = JSON.stringify(Dane);
+    
+    localStorage.setItem(Platforma, Dane_serialized);
+    location.reload();
+    }
+    
+}
+    for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+
+            ZapisaneU.innerHTML += `${key}: ${value} <br>`;
+        }
+
+        
+
+ 
+
+</script>
+
+
+</html>
